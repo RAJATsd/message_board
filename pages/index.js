@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const addMessage = (newMessage) => {
-    const newMessageList = [newMessage, ...messageList];
+    const newMessageList = [...messageList, newMessage];
     setMessageList(newMessageList);
   };
 
