@@ -1,9 +1,10 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 import DeleteModal from "@/components/DeleteModal";
 import MessageInfo from "@/components/MessageInfo";
 import TextInput from "@/components/TextInput";
 import { API_BASE_URL, authHeader } from "@/constants";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 export default function Home() {
   const [messageList, setMessageList] = useState([]);
@@ -101,15 +102,6 @@ export default function Home() {
           <div className="text-3xl">Loading ...</div>
         ) : (
           renderMessageList()
-          // messageList.map((message) => (
-          //   <MessageInfo
-          //     key={message.id}
-          //     message={message}
-          //     deleteMessage={handleDeleteMessage}
-          //     onCheckboxClick={handleCheckboxClick}
-          //     checked={selectedMessage.includes(message.id)}
-          //   />
-          // ))
         )}
       </div>
       <DeleteModal
