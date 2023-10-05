@@ -1,7 +1,7 @@
 import { convertTime } from "@/utils/convertTime";
 import ActionButton from "../ActionButton";
 
-const MessageInfo = ({ message, deleteMessage }) => {
+const MessageInfo = ({ message, deleteMessage, onCheckboxClick, checked }) => {
   const { source, text, timestamp, id } = message || {};
 
   return (
@@ -20,7 +20,12 @@ const MessageInfo = ({ message, deleteMessage }) => {
           </div>
         </div>
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => onCheckboxClick(id)}
+            checked={checked}
+            className="w-4 h-4"
+          />
         </div>
       </div>
       <div className="mt-1">{text}</div>

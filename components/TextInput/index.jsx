@@ -3,7 +3,13 @@ import axios from "axios";
 import { useState } from "react";
 import ActionButton from "../ActionButton";
 
-const TextInput = ({ addMessage }) => {
+const TextInput = ({
+  addMessage,
+  onDelete,
+  noOfSelectedMessage,
+  latestFirst,
+  onOrderChange,
+}) => {
   const [inputVal, setInputVal] = useState("");
 
   const handleAddMessage = async () => {
@@ -29,7 +35,18 @@ const TextInput = ({ addMessage }) => {
           onChange={(evt) => setInputVal(evt.target.value)}
         />
         <ActionButton text="Post!" onClick={handleAddMessage} />
-        <ActionButton text="Delete All" className="text-red-500 font-bold" />
+        <ActionButton
+          text={`Delete ${
+            noOfSelectedMessage ? `${noOfSelectedMessage} messages` : "All"
+          }`}
+          className="text-red-500 font-bold"
+          onClick={onDelete}
+        />
+        <ActionButton
+          text={`Sort by ${latestFirst ? "earliest" : "latest"} first`}
+          className="text-blue-500 font-bold"
+          onClick={onOrderChange}
+        />
       </div>
     </div>
   );
